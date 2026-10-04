@@ -23,5 +23,7 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   in-memory) e Q&A com citação de fontes.
 - Agent **Reports**: gera relatórios Markdown (status/sprint/incidente)
   combinando contexto livre, inventário de repos e RAG.
+- Agent **Slides & Infographics**: outlines de slides, specs de infográfico e
+  preparação do pacote de fontes para o NotebookLM.
 
 [Unreleased]: https://example.com/workg/compare/main...develop
