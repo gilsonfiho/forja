@@ -21,5 +21,7 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 - Módulo **RAG** + agent: ingestão de `.md`, embeddings configuráveis
   (sentence-transformers com fallback offline), vector store (Chroma ou
   in-memory) e Q&A com citação de fontes.
+- Agent **Reports**: gera relatórios Markdown (status/sprint/incidente)
+  combinando contexto livre, inventário de repos e RAG.
 
 [Unreleased]: https://example.com/workg/compare/main...develop
