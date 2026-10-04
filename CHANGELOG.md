@@ -16,5 +16,7 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   listagem via API REST (backend `rest`).
 - Agent **Repo Analysis**: inventário e análise de saúde dos repositórios de
   serviços/projetos (stack, CI, testes, estado, riscos).
+- Agent **Commit / PR / DevOps**: geração de mensagens Conventional Commits,
+  descrições de PR e padrões/artefatos de DevOps.
 
 [Unreleased]: https://example.com/workg/compare/main...develop
