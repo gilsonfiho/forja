@@ -1,0 +1,89 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "workg"
+version = "0.1.0"
+description = "Dev Workflow Copilot — agents, skills e scripts orquestrados (Jira, repos, commits/PR, relatórios, slides, RAG)."
+readme = "README.md"
+requires-python = ">=3.11"
+license = { file = "LICENSE" }
+authors = [{ name = "Gilson Filho", email = "gfrobotica@gmail.com" }]
+keywords = ["agents", "claude", "jira", "rag", "devops", "automation"]
+
+dependencies = [
+    "fastapi>=0.115",
+    "uvicorn[standard]>=0.30",
+    "jinja2>=3.1",
+    "python-multipart>=0.0.9",
+    "pydantic>=2.7",
+    "pydantic-settings>=2.3",
+    "httpx>=0.27",
+    "typer>=0.12",
+    "rich>=13.7",
+    "structlog>=24.1",
+    "python-dotenv>=1.0",
+]
+
+[project.optional-dependencies]
+# Agents (Claude Agent SDK). Opcional para permitir rodar a plataforma
+# em modo degradado/mocked sem a dependência instalada.
+agents = [
+    "anthropic>=0.40",
+    "claude-agent-sdk>=0.1.0",
+]
+# RAG: embeddings e vector store configuráveis.
+rag = [
+    "chromadb>=0.5",
+    "sentence-transformers>=3.0",
+]
+# Integrações opcionais.
+integrations = [
+    "GitPython>=3.1",
+    "atlassian-python-api>=3.41",
+]
+dev = [
+    "pytest>=8.2",
+    "pytest-asyncio>=0.23",
+    "pytest-cov>=5.0",
+    "ruff>=0.5",
+    "mypy>=1.10",
+    "pre-commit>=3.7",
+]
+all = ["workg[agents,rag,integrations]"]
+
+[project.scripts]
+workg = "workg.__main__:app"
+
+[project.urls]
+Homepage = "https://example.com/workg"
+Changelog = "https://example.com/workg/blob/main/CHANGELOG.md"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/workg"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "W", "C4", "SIM"]
+ignore = ["B008"]  # FastAPI/Typer usam chamadas em defaults de parâmetro
+
+[tool.ruff.lint.isort]
+known-first-party = ["workg"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+addopts = "-q"
+
+[tool.mypy]
+python_version = "3.11"
+packages = ["workg"]
+mypy_path = "src"
+ignore_missing_imports = true
+warn_unused_ignores = true
