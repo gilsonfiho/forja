@@ -20,6 +20,7 @@ _AGENT_MODULES: tuple[str, ...] = (
     "workg.agents.jira.agent",
     "workg.agents.repo_analysis.agent",
     "workg.agents.commit_pr_devops.agent",
+    "workg.agents.rag.agent",
     "workg.agents.reports.agent",
     "workg.agents.slides.agent",
 )

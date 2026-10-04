@@ -18,5 +18,8 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
   serviços/projetos (stack, CI, testes, estado, riscos).
 - Agent **Commit / PR / DevOps**: geração de mensagens Conventional Commits,
   descrições de PR e padrões/artefatos de DevOps.
+- Módulo **RAG** + agent: ingestão de `.md`, embeddings configuráveis
+  (sentence-transformers com fallback offline), vector store (Chroma ou
+  in-memory) e Q&A com citação de fontes.
 
 [Unreleased]: https://example.com/workg/compare/main...develop
