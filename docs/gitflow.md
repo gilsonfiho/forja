@@ -15,12 +15,17 @@
 
 ## Ciclo de uma feature
 
+Cada feature entrega uma versão **MINOR** própria: faz o bump de versão, atualiza
+o CHANGELOG e recebe uma **tag** na sua merge em `develop`.
+
 ```bash
 git checkout develop && git pull
 git checkout -b feature/<nome>
 # ... desenvolve, commita (Conventional Commits) ...
-# abre PR feature/<nome> -> develop
-# após review, merge com --no-ff
+# bump de versão em pyproject.toml + src/workg/__init__.py (ex.: 0.8.0 -> 0.9.0)
+# adiciona a seção da versão no CHANGELOG.md
+# abre PR feature/<nome> -> develop ; merge com --no-ff
+git tag -a vX.Y.0 -m "vX.Y.0 — <feature>"
 ```
 
 ## Ciclo de uma release
@@ -53,6 +58,10 @@ Exemplos:
 
 SemVer (`MAJOR.MINOR.PATCH`). O histórico fica em [`CHANGELOG.md`](../CHANGELOG.md),
 no formato *Keep a Changelog*.
+
+- **Feature** → bump de `MINOR`, tag `vX.Y.0` na merge em `develop`.
+- **Release** → consolida o conjunto de features, tag `vX.Y.Z` em `main`.
+- **Hotfix** → bump de `PATCH`, tag em `main`.
 
 ## Helper
 

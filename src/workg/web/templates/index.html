@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block title %}WorkG — Dashboard{% endblock %}
+{% block content %}
+<section class="layout">
+  <div class="agents">
+    <h2>Agents</h2>
+    <div class="grid">
+      {% for s in specs %}
+      <article class="card" data-slug="{{ s.slug }}" tabindex="0">
+        <h3>{{ s.name }}</h3>
+        <p class="slug">{{ s.slug }}</p>
+        <p class="desc">{{ s.description }}</p>
+        <div class="tags">
+          {% for t in s.tags %}<span class="tag">{{ t }}</span>{% endfor %}
+        </div>
+      </article>
+      {% endfor %}
+    </div>
+  </div>
+
+  <aside class="console">
+    <h2>Executar</h2>
+    <form id="run-form">
+      <label>Agent
+        <select id="slug" name="slug" required>
+          {% for s in specs %}<option value="{{ s.slug }}">{{ s.name }} ({{ s.slug }})</option>{% endfor %}
+        </select>
+      </label>
+      <label>Ação
+        <input id="action" name="action" value="default" />
+      </label>
+      <label>Prompt / instrução
+        <textarea id="prompt" name="prompt" rows="3" placeholder="opcional"></textarea>
+      </label>
+      <label>Parâmetros (um por linha, chave=valor)
+        <textarea id="params" name="params" rows="3" placeholder="jql=project = ABC&#10;k=5"></textarea>
+      </label>
+      <label class="check">
+        <input type="checkbox" id="dry_run" /> dry-run (não executa efeitos)
+      </label>
+      <button type="submit" id="run-btn">Executar</button>
+    </form>
+    <h3>Resultado</h3>
+    <pre id="result" class="result">—</pre>
+  </aside>
+</section>
+{% endblock %}
+{% block scripts %}
+<script src="/static/app.js"></script>
+{% endblock %}
