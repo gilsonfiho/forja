@@ -13,7 +13,14 @@ from workg.agents.jira import prompts
 from workg.config import JiraBackend, Settings, get_settings
 from workg.integrations import jira_mcp
 from workg.logging_conf import get_logger
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 
 log = get_logger("agent.jira")
@@ -27,6 +34,26 @@ class JiraAgent(BaseAgent):
         name="Jira",
         description="Analisa e ajuda a controlar tasks no Jira (via MCP Atlassian ou REST).",
         tags=["jira", "tasks", "planning"],
+        icon="📋",
+        actions=[
+            AgentAction(
+                name="analyze",
+                description="Resume e faz triagem das issues de uma JQL.",
+                params=[
+                    AgentParam(
+                        name="jql",
+                        help="Consulta JQL.",
+                        placeholder="project = ABC AND sprint in openSprints()",
+                    ),
+                ],
+            ),
+            AgentAction(
+                name="list",
+                description="Lista issues cruas (apenas backend REST).",
+                accepts_prompt=False,
+                params=[AgentParam(name="jql", help="Consulta JQL.")],
+            ),
+        ],
     )
 
     def __init__(self, settings: Settings | None = None, runtime: ClaudeRuntime | None = None):

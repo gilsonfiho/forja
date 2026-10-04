@@ -9,7 +9,14 @@ Ações:
 from __future__ import annotations
 
 from workg.config import Settings, get_settings
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 from workg.rag.pipeline import KnowledgeBase
 
@@ -27,6 +34,30 @@ class RagAgent(BaseAgent):
         name="RAG / Base de Conhecimento",
         description="Busca semântica e Q&A sobre os documentos .md de chamados e projetos.",
         tags=["rag", "search", "knowledge"],
+        icon="🔎",
+        actions=[
+            AgentAction(
+                name="query",
+                description="Retorna os trechos mais relevantes (sem LLM).",
+                params=[
+                    AgentParam(name="q", help="Pergunta (ou use o campo prompt)."),
+                    AgentParam(name="k", help="Nº de trechos.", placeholder="5"),
+                ],
+            ),
+            AgentAction(
+                name="ask",
+                description="Sintetiza uma resposta citando as fontes (LLM).",
+                params=[
+                    AgentParam(name="q", help="Pergunta (ou use o campo prompt)."),
+                    AgentParam(name="k", help="Nº de trechos.", placeholder="5"),
+                ],
+            ),
+            AgentAction(
+                name="reindex",
+                description="(Re)indexa a base de conhecimento.",
+                accepts_prompt=False,
+            ),
+        ],
     )
 
     def __init__(

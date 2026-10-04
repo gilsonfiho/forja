@@ -45,3 +45,24 @@ def test_run_agent_dry_run(client: TestClient):
 def test_run_unknown_agent_404(client: TestClient):
     res = client.post("/api/agents/nope/run", json={})
     assert res.status_code == 404
+
+
+def test_specs_expose_actions_and_icon(client: TestClient):
+    agents = {a["slug"]: a for a in client.get("/api/agents").json()}
+    jira = agents["jira"]
+    assert jira["icon"]
+    action_names = {a["name"] for a in jira["actions"]}
+    assert {"analyze", "list"}.issubset(action_names)
+
+
+def test_artifact_reads_allowed_file(client: TestClient):
+    res = client.get("/api/artifact", params={"path": "knowledge_base/README.md"})
+    assert res.status_code == 200
+    body = res.json()
+    assert body["kind"] == "markdown"
+    assert "Base de Conhecimento" in body["content"]
+
+
+def test_artifact_forbidden_outside(client: TestClient):
+    res = client.get("/api/artifact", params={"path": "pyproject.toml"})
+    assert res.status_code == 403

@@ -7,8 +7,9 @@
     <div class="grid">
       {% for s in specs %}
       <article class="card" data-slug="{{ s.slug }}" tabindex="0">
-        <h3>{{ s.name }}</h3>
-        <p class="slug">{{ s.slug }}</p>
+        <div class="card-head"><span class="card-icon">{{ s.icon }}</span>
+          <div><h3>{{ s.name }}</h3><p class="slug">{{ s.slug }}</p></div>
+        </div>
         <p class="desc">{{ s.description }}</p>
         <div class="tags">
           {% for t in s.tags %}<span class="tag">{{ t }}</span>{% endfor %}
@@ -23,28 +24,48 @@
     <form id="run-form">
       <label>Agent
         <select id="slug" name="slug" required>
-          {% for s in specs %}<option value="{{ s.slug }}">{{ s.name }} ({{ s.slug }})</option>{% endfor %}
+          {% for s in specs %}<option value="{{ s.slug }}">{{ s.icon }} {{ s.name }}</option>{% endfor %}
         </select>
       </label>
       <label>Ação
-        <input id="action" name="action" value="default" />
+        <select id="action" name="action"></select>
       </label>
-      <label>Prompt / instrução
+      <p id="action-desc" class="hint"></p>
+      <div id="dynamic-params"></div>
+      <label id="prompt-wrap">Prompt / instrução
         <textarea id="prompt" name="prompt" rows="3" placeholder="opcional"></textarea>
       </label>
-      <label>Parâmetros (um por linha, chave=valor)
-        <textarea id="params" name="params" rows="3" placeholder="jql=project = ABC&#10;k=5"></textarea>
-      </label>
-      <label class="check">
-        <input type="checkbox" id="dry_run" /> dry-run (não executa efeitos)
-      </label>
-      <button type="submit" id="run-btn">Executar</button>
+      <details class="extra">
+        <summary>Parâmetros extras</summary>
+        <textarea id="params" rows="2" placeholder="chave=valor por linha"></textarea>
+      </details>
+      <label class="check"><input type="checkbox" id="dry_run" /> dry-run (não executa efeitos)</label>
+      <button type="submit" id="run-btn">▶ Executar</button>
     </form>
-    <h3>Resultado</h3>
-    <pre id="result" class="result">—</pre>
   </aside>
+</section>
+
+<section id="result-section" class="result-section hidden">
+  <div class="result-head">
+    <span id="status-chip" class="chip">—</span>
+    <h2 id="result-title">Resultado</h2>
+    <span id="result-time" class="muted-mono"></span>
+    <button id="copy-btn" class="ghost" type="button" title="Copiar JSON">⧉ copiar</button>
+  </div>
+  <p id="result-summary" class="result-summary"></p>
+  <nav class="tabs" id="tabs">
+    <button class="tab active" data-tab="rendered">Resultado</button>
+    <button class="tab" data-tab="artifacts">Artefatos</button>
+    <button class="tab" data-tab="data">Dados</button>
+    <button class="tab" data-tab="json">JSON</button>
+  </nav>
+  <div class="tab-panel active" id="panel-rendered"><div id="rendered" class="markdown"></div></div>
+  <div class="tab-panel" id="panel-artifacts"><div id="artifacts"></div></div>
+  <div class="tab-panel" id="panel-data"><div id="data-view"></div></div>
+  <div class="tab-panel" id="panel-json"><pre id="json-view" class="code"></pre></div>
 </section>
 {% endblock %}
 {% block scripts %}
+<script>window.WORKG_SPECS = {{ specs_json|safe }};</script>
 <script src="/static/app.js"></script>
 {% endblock %}

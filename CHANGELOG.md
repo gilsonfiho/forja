@@ -11,6 +11,16 @@ e tag em `main`.
 
 ## [Unreleased]
 
+## [1.1.0] - 2026-10-04
+### Added
+- **Saída rica no dashboard**: resultado renderizado em Markdown com syntax
+  highlighting, tabelas para dados estruturados, abas (Resultado/Artefatos/
+  Dados/JSON), chip de status e tempo de execução.
+- **Preview de artefatos**: endpoint `GET /api/artifact` (sandbox nas pastas de
+  saída) e pré-visualização inline dos arquivos gerados.
+- **Formulário dinâmico por agent**: ações e parâmetros declarados em
+  `AgentSpec.actions` dirigem os campos da UI; ícone por agent.
+
 ## [1.0.0] - 2026-10-04
 Primeira release de produção. Consolida as features `0.1.0`–`0.8.0` em `main`:
 plataforma de agents (Jira, Repo Analysis, Commit/PR/DevOps, RAG, Reports,
@@ -59,7 +69,8 @@ Slides & Infographics), orquestrador com Claude Agent SDK e dashboard web.
   orquestrador (`BaseAgent`/`AgentRegistry`), runtime do Claude Agent SDK,
   CLI (`workg`), app FastAPI mínimo, tooling (ruff, mypy, pre-commit, CI) e docs base.
 
-[Unreleased]: https://example.com/workg/compare/v1.0.0...develop
+[Unreleased]: https://example.com/workg/compare/v1.1.0...develop
+[1.1.0]: https://example.com/workg/compare/v1.0.0...v1.1.0
 [1.0.0]: https://example.com/workg/compare/v0.8.0...v1.0.0
 [0.8.0]: https://example.com/workg/compare/v0.7.0...v0.8.0
 [0.7.0]: https://example.com/workg/compare/v0.6.0...v0.7.0
