@@ -3,7 +3,9 @@
 from __future__ import annotations
 
 from workg.orchestrator.base import (
+    AgentAction,
     AgentContext,
+    AgentParam,
     AgentRegistry,
     AgentResult,
     AgentSpec,
@@ -13,7 +15,9 @@ from workg.orchestrator.base import (
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 
 __all__ = [
+    "AgentAction",
     "AgentContext",
+    "AgentParam",
     "AgentResult",
     "AgentSpec",
     "BaseAgent",

@@ -12,7 +12,14 @@ from pathlib import Path
 from workg.config import Settings, get_settings
 from workg.integrations import git_repos
 from workg.logging_conf import get_logger
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 
 log = get_logger("agent.repo")
@@ -32,6 +39,26 @@ class RepoAnalysisAgent(BaseAgent):
         name="Repo Analysis",
         description="Varre e analisa repositórios de serviços/projetos (saúde, stack, CI).",
         tags=["git", "repos", "health"],
+        icon="🗂️",
+        actions=[
+            AgentAction(
+                name="scan",
+                description="Inventário de todos os repositórios sob a raiz.",
+                accepts_prompt=False,
+                params=[
+                    AgentParam(name="root", help="Raiz dos repos (default WORKG_REPOS_ROOT)."),
+                    AgentParam(name="max_depth", help="Profundidade da busca.", placeholder="3"),
+                ],
+            ),
+            AgentAction(
+                name="analyze",
+                description="Análise de saúde (LLM) de um repositório específico.",
+                params=[
+                    AgentParam(name="name", required=True, help="Nome do repositório."),
+                    AgentParam(name="root", help="Raiz dos repos."),
+                ],
+            ),
+        ],
     )
 
     def __init__(self, settings: Settings | None = None, runtime: ClaudeRuntime | None = None):

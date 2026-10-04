@@ -13,7 +13,14 @@ from pathlib import Path
 from workg.agents.commit_pr_devops import prompts
 from workg.config import Settings, get_settings
 from workg.integrations import git_repos
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 
 
@@ -23,6 +30,31 @@ class CommitPrDevOpsAgent(BaseAgent):
         name="Commit / PR / DevOps",
         description="Gera commits (Conventional Commits), descrições de PR e padrões de DevOps.",
         tags=["git", "commit", "pr", "devops", "ci"],
+        icon="🔀",
+        actions=[
+            AgentAction(
+                name="commit",
+                description="Mensagem Conventional Commits a partir do diff staged.",
+                params=[
+                    AgentParam(name="repo", help="Caminho do repositório.", placeholder="."),
+                    AgentParam(name="diff", help="Diff explícito (senão usa git diff --staged)."),
+                ],
+            ),
+            AgentAction(
+                name="pr",
+                description="Descrição de PR a partir dos commits base..head.",
+                params=[
+                    AgentParam(name="base", help="Branch base.", placeholder="develop"),
+                    AgentParam(name="head", help="Branch head.", placeholder="HEAD"),
+                    AgentParam(name="repo", help="Caminho do repositório."),
+                ],
+            ),
+            AgentAction(
+                name="devops",
+                description="Padrões/artefatos de DevOps para uma stack.",
+                params=[AgentParam(name="stack", help="Stack alvo.", placeholder="python")],
+            ),
+        ],
     )
 
     def __init__(self, settings: Settings | None = None, runtime: ClaudeRuntime | None = None):

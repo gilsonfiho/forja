@@ -17,7 +17,14 @@ from pathlib import Path
 from workg.agents.slides import prompts
 from workg.config import Settings, get_settings
 from workg.integrations.notebooklm import NotebookLMAdapter
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 from workg.rag.pipeline import KnowledgeBase
 
@@ -28,6 +35,33 @@ class SlidesAgent(BaseAgent):
         name="Slides & Infographics",
         description="Gera outlines de slides/infográficos e prepara fontes para o NotebookLM.",
         tags=["slides", "infographic", "notebooklm"],
+        icon="🎞️",
+        actions=[
+            AgentAction(
+                name="outline",
+                description="Estrutura de slides (título + bullets por slide).",
+                params=[
+                    AgentParam(name="source", help="Arquivo .md de origem (ex.: um relatório)."),
+                    AgentParam(name="kb_query", help="Consulta ao RAG como fonte."),
+                ],
+            ),
+            AgentAction(
+                name="infographic",
+                description="Spec de infográfico (mensagem, blocos, métricas).",
+                params=[
+                    AgentParam(name="source", help="Arquivo .md de origem."),
+                    AgentParam(name="kb_query", help="Consulta ao RAG como fonte."),
+                ],
+            ),
+            AgentAction(
+                name="notebooklm",
+                description="Prepara o pacote de fontes para o NotebookLM.",
+                params=[
+                    AgentParam(name="source", help="Arquivo .md de origem."),
+                    AgentParam(name="title", help="Título do material."),
+                ],
+            ),
+        ],
     )
 
     def __init__(

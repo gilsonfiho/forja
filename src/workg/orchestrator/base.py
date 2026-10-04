@@ -15,6 +15,24 @@ from typing import Any
 from pydantic import BaseModel, Field
 
 
+class AgentParam(BaseModel):
+    """Parâmetro aceito por uma ação (dirige o formulário dinâmico na UI)."""
+
+    name: str
+    required: bool = False
+    help: str = ""
+    placeholder: str = ""
+
+
+class AgentAction(BaseModel):
+    """Ação exposta por um agent."""
+
+    name: str
+    description: str = ""
+    params: list[AgentParam] = Field(default_factory=list)
+    accepts_prompt: bool = True
+
+
 class AgentSpec(BaseModel):
     """Metadados declarativos de um agent."""
 
@@ -23,6 +41,8 @@ class AgentSpec(BaseModel):
     description: str = Field(..., description="O que o agent faz.")
     tags: list[str] = Field(default_factory=list)
     version: str = "0.1.0"
+    actions: list[AgentAction] = Field(default_factory=list)
+    icon: str = "⚙"
 
 
 class AgentContext(BaseModel):

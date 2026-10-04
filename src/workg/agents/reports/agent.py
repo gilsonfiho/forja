@@ -16,7 +16,14 @@ import re
 from pathlib import Path
 
 from workg.config import Settings, get_settings
-from workg.orchestrator.base import AgentContext, AgentResult, AgentSpec, BaseAgent
+from workg.orchestrator.base import (
+    AgentAction,
+    AgentContext,
+    AgentParam,
+    AgentResult,
+    AgentSpec,
+    BaseAgent,
+)
 from workg.orchestrator.runtime import ClaudeRuntime, RuntimeUnavailableError
 from workg.rag.pipeline import KnowledgeBase
 
@@ -40,6 +47,23 @@ class ReportsAgent(BaseAgent):
         name="Reports",
         description="Gera relatórios (status, sprint, incidente) de repos, RAG e contexto.",
         tags=["reports", "markdown", "synthesis"],
+        icon="📊",
+        actions=[
+            AgentAction(
+                name="generate",
+                description="Gera e salva um relatório Markdown.",
+                params=[
+                    AgentParam(
+                        name="type",
+                        help="status | sprint | incident | custom",
+                        placeholder="status",
+                    ),
+                    AgentParam(name="title", help="Título do relatório."),
+                    AgentParam(name="include", help="Fontes extras (ex.: repos)."),
+                    AgentParam(name="kb_query", help="Consulta p/ puxar contexto do RAG."),
+                ],
+            ),
+        ],
     )
 
     def __init__(
