@@ -77,6 +77,26 @@ def _git(path: Path, *args: str) -> str:
         return ""
 
 
+def git_text(path: Path, *args: str) -> str:
+    """Executa um comando git e retorna o stdout (público, para outros módulos)."""
+    return _git(Path(path), *args)
+
+
+def diff(path: Path, *, staged: bool = True, max_chars: int = 16000) -> str:
+    """Retorna o diff (staged por padrão) truncado para caber em um prompt."""
+    args = ["diff", "--staged"] if staged else ["diff"]
+    out = _git(Path(path), *args)
+    if len(out) > max_chars:
+        out = out[:max_chars] + "\n... [diff truncado] ..."
+    return out
+
+
+def log_range(path: Path, base: str, head: str = "HEAD", max_count: int = 100) -> list[str]:
+    """Lista mensagens de commit em ``base..head``."""
+    out = _git(Path(path), "log", f"--max-count={max_count}", "--pretty=%s", f"{base}..{head}")
+    return [line for line in out.splitlines() if line.strip()]
+
+
 def discover_repos(root: Path, max_depth: int = 3) -> list[Path]:
     """Encontra diretórios que contêm ``.git`` sob ``root`` até ``max_depth``."""
     root = Path(root)
