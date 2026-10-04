@@ -12,5 +12,7 @@ e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
 - Fundação da plataforma: configuração (`pydantic-settings`), logging estruturado,
   orquestrador (`BaseAgent`/`AgentRegistry`), runtime do Claude Agent SDK,
   CLI (`workg`), app FastAPI mínimo, tooling (ruff, mypy, pre-commit, CI) e docs base.
+- Agent **Jira**: análise/triagem de issues via MCP Atlassian (backend `mcp`) e
+  listagem via API REST (backend `rest`).
 
 [Unreleased]: https://example.com/workg/compare/main...develop
