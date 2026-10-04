@@ -1,0 +1,13 @@
+# Changelog
+
+Todos os lançamentos notáveis deste projeto são documentados aqui.
+
+O formato segue [Keep a Changelog](https://keepachangelog.com/pt-BR/1.1.0/)
+e o projeto adere ao [Versionamento Semântico](https://semver.org/lang/pt-BR/).
+
+## [Unreleased]
+
+### Added
+- Estrutura inicial do repositório (baseline em `main`).
+
+[Unreleased]: https://example.com/workg/compare/main...develop

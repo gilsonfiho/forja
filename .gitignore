@@ -1,0 +1,62 @@
+# ---- Python ----
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+dist/
+downloads/
+eggs/
+.eggs/
+*.egg-info/
+*.egg
+.installed.cfg
+pip-wheel-metadata/
+
+# ---- Virtual envs ----
+.venv/
+venv/
+env/
+ENV/
+
+# ---- Test / coverage ----
+.pytest_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+.nox/
+coverage.xml
+.mypy_cache/
+.ruff_cache/
+
+# ---- Secrets / config ----
+.env
+.env.*
+!.env.example
+*.secret
+
+# ---- Vector store / RAG artifacts ----
+.chroma/
+chroma_db/
+*.faiss
+data/index/
+data/cache/
+
+# ---- Reports / generated output ----
+output/
+reports_out/
+*.pptx~
+
+# ---- IDE / OS ----
+.idea/
+.vscode/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# ---- Logs ----
+*.log
+logs/
