@@ -12,7 +12,11 @@ Jira · Análise de repositórios · Padrões de commit/PR/DevOps · Relatórios
 
 ## O que é
 
-WorkG é uma plataforma modular que reúne vários **agents** especializados (baseados no **Claude Agent SDK**), **skills** reutilizáveis e **scripts**, orquestrados por uma **interface web (FastAPI + dashboard)**. O objetivo é centralizar e automatizar as tarefas recorrentes do dia a dia de engenharia.
+WorkG é uma plataforma modular que reúne vários **agents** especializados (baseados no **Claude Agent SDK**), **skills** reutilizáveis e **scripts**. Ele foi pensado como uma **ferramenta auxiliar ao Claude Code** (e similares — Cursor, Claude Desktop): expõe os agents como **tools MCP** que você aciona de dentro da sua sessão de código. Há também uma **interface web (FastAPI + dashboard)** como cockpit local opcional e um **CLI**.
+
+- **MCP server** (principal) — os agents viram tools no Claude Code/Cursor/Claude Desktop. Veja [`docs/mcp.md`](docs/mcp.md).
+- **Dashboard web** (cockpit) — executar agents por clique e revisar resultados/artefatos.
+- **CLI** — `workg run <agent>` para automações.
 
 ### Agents / módulos
 
@@ -71,6 +75,21 @@ workg serve
 ```
 
 Scripts de bootstrap prontos em [`scripts/`](scripts/) (`bootstrap.ps1` / `bootstrap.sh`).
+
+### Usar com o Claude Code (MCP)
+
+```bash
+pip install -e ".[mcp]"
+workg mcp            # sobe o servidor MCP (stdio)
+```
+
+Registre no Claude Code (copie `.mcp.json.example` para `.mcp.json`) ou:
+
+```bash
+claude mcp add workg -- ./.venv/Scripts/python.exe -m workg.mcp_server
+```
+
+Os agents ficam disponíveis como tools `workg_jira`, `workg_rag`, `workg_reports`, etc. Detalhes em [`docs/mcp.md`](docs/mcp.md).
 
 ## Fluxo de desenvolvimento (Git Flow)
 
