@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "workg"
-version = "1.1.0"
+version = "1.2.0"
 description = "Dev Workflow Copilot — agents, skills e scripts orquestrados (Jira, repos, commits/PR, relatórios, slides, RAG)."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -43,6 +43,10 @@ integrations = [
     "GitPython>=3.1",
     "atlassian-python-api>=3.41",
 ]
+# Servidor MCP (expõe os agents ao Claude Code / Cursor / Claude Desktop).
+mcp = [
+    "mcp>=1.2",
+]
 dev = [
     "pytest>=8.2",
     "pytest-asyncio>=0.23",
@@ -51,10 +55,11 @@ dev = [
     "mypy>=1.10",
     "pre-commit>=3.7",
 ]
-all = ["workg[agents,rag,integrations]"]
+all = ["workg[agents,rag,integrations,mcp]"]
 
 [project.scripts]
 workg = "workg.__main__:app"
+workg-mcp = "workg.mcp_server.__main__:main"
 
 [project.urls]
 Homepage = "https://example.com/workg"

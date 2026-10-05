@@ -55,6 +55,18 @@ def serve(
 
 
 @app.command()
+def mcp() -> None:
+    """Sobe o servidor MCP (stdio) que expõe os agents ao Claude Code/similares."""
+    import sys
+
+    from workg.mcp_server.server import run
+
+    # stdout é o canal do protocolo MCP: logs vão para stderr.
+    configure_logging(get_settings().log_level, stream=sys.stderr)
+    run("stdio")
+
+
+@app.command()
 def agents() -> None:
     """Lista os agents registrados."""
     from workg.agents import load_agents

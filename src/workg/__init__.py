@@ -5,6 +5,6 @@ trabalho de engenharia (Jira, repositórios, commits/PR/DevOps,
 relatórios, slides/infográficos e RAG sobre a base de conhecimento).
 """
 
-__version__ = "1.1.0"
+__version__ = "1.2.0"
 
 __all__ = ["__version__"]

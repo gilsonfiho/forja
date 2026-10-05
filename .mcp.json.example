@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "workg": {
+      "command": "./.venv/Scripts/python.exe",
+      "args": ["-m", "workg.mcp_server"],
+      "env": {
+        "WORKG_ANTHROPIC_API_KEY": "",
+        "WORKG_KNOWLEDGE_BASE_PATH": "knowledge_base",
+        "WORKG_REPOS_ROOT": ""
+      }
+    }
+  }
+}
