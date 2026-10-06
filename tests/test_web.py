@@ -1,7 +1,7 @@
 import pytest
 from fastapi.testclient import TestClient
 
-from workg.web.app import create_app
+from forja.web.app import create_app
 
 
 @pytest.fixture(scope="module")
@@ -27,7 +27,7 @@ def test_list_agents(client: TestClient):
 def test_dashboard_page(client: TestClient):
     res = client.get("/")
     assert res.status_code == 200
-    assert "WorkG" in res.text
+    assert "Forja" in res.text
     assert "Executar" in res.text
 
 

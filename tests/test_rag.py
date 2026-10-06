@@ -1,10 +1,10 @@
 from pathlib import Path
 
-from workg.agents.rag.agent import RagAgent
-from workg.config import Settings
-from workg.orchestrator.base import AgentContext
-from workg.rag.embeddings import HashingEmbedder
-from workg.rag.pipeline import KnowledgeBase, chunk_text
+from forja.agents.rag.agent import RagAgent
+from forja.config import Settings
+from forja.orchestrator.base import AgentContext
+from forja.rag.embeddings import HashingEmbedder
+from forja.rag.pipeline import KnowledgeBase, chunk_text
 
 
 def test_chunk_text():

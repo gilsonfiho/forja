@@ -22,9 +22,9 @@ Gera bons padrões de commit, descrições de PR e artefatos de DevOps.
 
 ```bash
 git add -A
-workg run commit-pr-devops --action commit
-workg run commit-pr-devops --action pr -p base=develop -p head=HEAD
-workg run commit-pr-devops --action devops -p stack=node --prompt "deploy em container"
+forja run commit-pr-devops --action commit
+forja run commit-pr-devops --action pr -p base=develop -p head=HEAD
+forja run commit-pr-devops --action devops -p stack=node --prompt "deploy em container"
 ```
 
 > As saídas **nunca** incluem assinatura/atribuição de ferramentas de IA.

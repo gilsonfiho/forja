@@ -21,13 +21,13 @@ Resolvida nesta ordem:
 
 O NotebookLM não tem API pública estável, então o fluxo padrão é **assistido**:
 o agent prepara o arquivo de fontes e você o carrega no NotebookLM para gerar
-slides/infográficos/áudio. Configure `WORKG_NOTEBOOKLM_ENABLED` e
-`WORKG_NOTEBOOKLM_NOTEBOOK_ID` para evoluir para automação futura.
+slides/infográficos/áudio. Configure `FORJA_NOTEBOOKLM_ENABLED` e
+`FORJA_NOTEBOOKLM_NOTEBOOK_ID` para evoluir para automação futura.
 
 ## Exemplos
 
 ```bash
-workg run slides --action outline -p source=output/reports/2026-10-04-status-x.md
-workg run slides --action infographic -p kb_query="métricas do serviço X"
-workg run slides --action notebooklm -p source=output/reports/2026-10-04-status-x.md -p title=status-x
+forja run slides --action outline -p source=output/reports/2026-10-04-status-x.md
+forja run slides --action infographic -p kb_query="métricas do serviço X"
+forja run slides --action notebooklm -p source=output/reports/2026-10-04-status-x.md -p title=status-x
 ```

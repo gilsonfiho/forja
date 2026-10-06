@@ -1,7 +1,7 @@
 import tomllib
 from pathlib import Path
 
-from workg import __version__
+from forja import __version__
 
 
 def test_version_matches_pyproject():

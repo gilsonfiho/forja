@@ -1,19 +1,19 @@
 import pytest
 
-from workg.mcp_server.server import agent_tools, build_server, format_result
+from forja.mcp_server.server import agent_tools, build_server, format_result
 
 
 def test_agent_tools_one_per_agent():
     tools = agent_tools()
     names = {t.name for t in tools}
-    assert "workg_jira" in names
-    assert "workg_repo_analysis" in names  # hífen -> underscore
-    assert all(t.name.startswith("workg_") for t in tools)
+    assert "forja_jira" in names
+    assert "forja_repo_analysis" in names  # hífen -> underscore
+    assert all(t.name.startswith("forja_") for t in tools)
     assert len(tools) >= 6
 
 
 def test_tool_description_lists_actions():
-    jira = next(t for t in agent_tools() if t.name == "workg_jira")
+    jira = next(t for t in agent_tools() if t.name == "forja_jira")
     assert "analyze" in jira.description
     assert "params" in jira.description
 
@@ -51,7 +51,7 @@ def test_format_result_error():
 
 
 async def test_tool_handler_dry_run():
-    jira = next(t for t in agent_tools() if t.name == "workg_jira")
+    jira = next(t for t in agent_tools() if t.name == "forja_jira")
     out = await jira.handler("analyze", None, {"jql": "project = X"}, True)
     assert "[OK] jira · analyze" in out
     assert "dry-run" in out.lower()
@@ -62,5 +62,5 @@ async def test_build_server_registers_tools():
     server = build_server()
     tools = await server.list_tools()
     tool_names = {t.name for t in tools}
-    assert "workg_jira" in tool_names
-    assert "workg_rag" in tool_names
+    assert "forja_jira" in tool_names
+    assert "forja_rag" in tool_names

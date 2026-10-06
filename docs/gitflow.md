@@ -22,7 +22,7 @@ o CHANGELOG e recebe uma **tag** na sua merge em `develop`.
 git checkout develop && git pull
 git checkout -b feature/<nome>
 # ... desenvolve, commita (Conventional Commits) ...
-# bump de versão em pyproject.toml + src/workg/__init__.py (ex.: 0.8.0 -> 0.9.0)
+# bump de versão em pyproject.toml + src/forja/__init__.py (ex.: 0.8.0 -> 0.9.0)
 # adiciona a seção da versão no CHANGELOG.md
 # abre PR feature/<nome> -> develop ; merge com --no-ff
 git tag -a vX.Y.0 -m "vX.Y.0 — <feature>"

@@ -2,22 +2,22 @@
 
 ## Camadas
 
-1. **Web (FastAPI + dashboard)** — `workg.web`
+1. **Web (FastAPI + dashboard)** — `forja.web`
    API REST + dashboard (HTMX/Jinja2) que exibem e disparam os agents.
 
-2. **Orquestrador** — `workg.orchestrator`
+2. **Orquestrador** — `forja.orchestrator`
    - `base.py`: contratos (`BaseAgent`, `AgentContext`, `AgentResult`, `AgentSpec`) e o `AgentRegistry`.
    - `runtime.py`: `ClaudeRuntime`, fachada sobre o **Claude Agent SDK** (degrada com erro claro se o extra `agents` não estiver instalado).
 
-3. **Agents** — `workg.agents.*`
+3. **Agents** — `forja.agents.*`
    Cada agent é um módulo com `build() -> BaseAgent` e um `AgentSpec`. São
-   descobertos por `workg.agents.load_agents()` e registrados no registry global.
+   descobertos por `forja.agents.load_agents()` e registrados no registry global.
 
-4. **Integrações** — `workg.integrations`
+4. **Integrações** — `forja.integrations`
    Adaptadores para sistemas externos: Jira (MCP Atlassian), repositórios Git,
    NotebookLM.
 
-5. **RAG** — `workg.rag`
+5. **RAG** — `forja.rag`
    Pipeline de ingestão da base de conhecimento (`knowledge_base/*.md`),
    embeddings configuráveis e vector store (Chroma por padrão; pgvector opcional).
 
@@ -27,7 +27,7 @@
   `rag`, `integrations`) instalados; cada agent valida suas dependências ao rodar.
 - **Contrato único de resultado:** todo agent devolve `AgentResult`
   (ok/summary/data/artifacts), consumido igualmente pela API, pelo dashboard e pelo CLI.
-- **Configuração por ambiente:** `workg.config.Settings` (prefixo `WORKG_`, `.env`).
+- **Configuração por ambiente:** `forja.config.Settings` (prefixo `FORJA_`, `.env`).
 - **Sem acoplamento de UI:** agents não conhecem FastAPI; a web apenas invoca o registry.
 
 ## Fluxo de uma execução
