@@ -6,6 +6,11 @@
 
 Jira · Análise de repositórios · Padrões de commit/PR/DevOps · Relatórios · Slides & infográficos · RAG sobre a base de conhecimento
 
+[![CI](https://github.com/gilsonfiho/forja/actions/workflows/ci.yml/badge.svg)](https://github.com/gilsonfiho/forja/actions/workflows/ci.yml)
+[![License: MIT](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE)
+[![Python](https://img.shields.io/badge/python-3.11%2B-blue.svg)](https://www.python.org/)
+[![Ruff](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/astral-sh/ruff/main/assets/badge/v2.json)](https://github.com/astral-sh/ruff)
+
 </div>
 
 ---

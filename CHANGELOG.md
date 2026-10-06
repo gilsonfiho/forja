@@ -10,6 +10,8 @@ Cada **feature** entrega uma versão `MINOR` própria (com tag na sua merge em
 e tag em `main`.
 
 ## [Unreleased]
+### Added
+- Badges no README (CI, licença, versão de Python, Ruff).
 
 ## [2.0.0] - 2026-10-05
 Primeira release pública como **Forja**. Consolida em `main` tudo desde a
