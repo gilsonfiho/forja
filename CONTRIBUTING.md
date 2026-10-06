@@ -30,4 +30,4 @@ pytest
 
 ## Testes
 
-Cobertura mínima esperada para novos módulos; use `pytest --cov=workg`.
+Cobertura mínima esperada para novos módulos; use `pytest --cov=forja`.

@@ -1,8 +1,8 @@
 <div align="center">
 
-# WorkG — Dev Workflow Copilot
+# 🔨 Forja
 
-**Plataforma de agents, skills e scripts orquestrados para acelerar o trabalho de engenharia.**
+**Forje seu fluxo de trabalho de engenharia.** Companion do Claude Code: agents, skills e scripts orquestrados, expostos via MCP.
 
 Jira · Análise de repositórios · Padrões de commit/PR/DevOps · Relatórios · Slides & infográficos · RAG sobre a base de conhecimento
 
@@ -12,7 +12,11 @@ Jira · Análise de repositórios · Padrões de commit/PR/DevOps · Relatórios
 
 ## O que é
 
-WorkG é uma plataforma modular que reúne vários **agents** especializados (baseados no **Claude Agent SDK**), **skills** reutilizáveis e **scripts**, orquestrados por uma **interface web (FastAPI + dashboard)**. O objetivo é centralizar e automatizar as tarefas recorrentes do dia a dia de engenharia.
+Forja é uma plataforma modular que reúne vários **agents** especializados (baseados no **Claude Agent SDK**), **skills** reutilizáveis e **scripts**. Ele foi pensado como uma **ferramenta auxiliar ao Claude Code** (e similares — Cursor, Claude Desktop): expõe os agents como **tools MCP** que você aciona de dentro da sua sessão de código. Há também uma **interface web (FastAPI + dashboard)** como cockpit local opcional e um **CLI**.
+
+- **MCP server** (principal) — os agents viram tools no Claude Code/Cursor/Claude Desktop. Veja [`docs/mcp.md`](docs/mcp.md).
+- **Dashboard web** (cockpit) — executar agents por clique e revisar resultados/artefatos.
+- **CLI** — `forja run <agent>` para automações.
 
 ### Agents / módulos
 
@@ -66,11 +70,26 @@ pip install -e ".[dev]"
 cp .env.example .env   # e preencha as chaves
 
 # 4. Subir o dashboard
-workg serve
-# ou:  uvicorn workg.web.app:app --reload
+forja serve
+# ou:  uvicorn forja.web.app:app --reload
 ```
 
 Scripts de bootstrap prontos em [`scripts/`](scripts/) (`bootstrap.ps1` / `bootstrap.sh`).
+
+### Usar com o Claude Code (MCP)
+
+```bash
+pip install -e ".[mcp]"
+forja mcp            # sobe o servidor MCP (stdio)
+```
+
+Registre no Claude Code (copie `.mcp.json.example` para `.mcp.json`) ou:
+
+```bash
+claude mcp add forja -- ./.venv/Scripts/python.exe -m forja.mcp_server
+```
+
+Os agents ficam disponíveis como tools `forja_jira`, `forja_rag`, `forja_reports`, etc. Detalhes em [`docs/mcp.md`](docs/mcp.md).
 
 ## Fluxo de desenvolvimento (Git Flow)
 
@@ -85,7 +104,7 @@ Versionamento **SemVer**, histórico em [`CHANGELOG.md`](CHANGELOG.md). Guia com
 ## Estrutura
 
 ```
-src/workg/        código da plataforma (orchestrator, agents, rag, integrations, web)
+src/forja/        código da plataforma (orchestrator, agents, rag, integrations, web)
 knowledge_base/   documentos .md que alimentam o RAG
 docs/             arquitetura, git flow e docs por agent
 scripts/          bootstrap e helpers de git flow

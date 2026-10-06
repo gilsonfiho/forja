@@ -1,0 +1,13 @@
+{
+  "mcpServers": {
+    "forja": {
+      "command": "./.venv/Scripts/python.exe",
+      "args": ["-m", "forja.mcp_server"],
+      "env": {
+        "FORJA_ANTHROPIC_API_KEY": "",
+        "FORJA_KNOWLEDGE_BASE_PATH": "knowledge_base",
+        "FORJA_REPOS_ROOT": ""
+      }
+    }
+  }
+}

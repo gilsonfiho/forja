@@ -3,8 +3,8 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "workg"
-version = "1.0.0"
+name = "forja"
+version = "2.0.0"
 description = "Dev Workflow Copilot — agents, skills e scripts orquestrados (Jira, repos, commits/PR, relatórios, slides, RAG)."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -43,6 +43,10 @@ integrations = [
     "GitPython>=3.1",
     "atlassian-python-api>=3.41",
 ]
+# Servidor MCP (expõe os agents ao Claude Code / Cursor / Claude Desktop).
+mcp = [
+    "mcp>=1.2",
+]
 dev = [
     "pytest>=8.2",
     "pytest-asyncio>=0.23",
@@ -51,17 +55,18 @@ dev = [
     "mypy>=1.10",
     "pre-commit>=3.7",
 ]
-all = ["workg[agents,rag,integrations]"]
+all = ["forja[agents,rag,integrations,mcp]"]
 
 [project.scripts]
-workg = "workg.__main__:app"
+forja = "forja.__main__:app"
+forja-mcp = "forja.mcp_server.__main__:main"
 
 [project.urls]
-Homepage = "https://example.com/workg"
-Changelog = "https://example.com/workg/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/gilsonfiho/forja"
+Changelog = "https://github.com/gilsonfiho/forja/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
-packages = ["src/workg"]
+packages = ["src/forja"]
 
 [tool.ruff]
 line-length = 100
@@ -73,7 +78,7 @@ select = ["E", "F", "I", "UP", "B", "W", "C4", "SIM"]
 ignore = ["B008"]  # FastAPI/Typer usam chamadas em defaults de parâmetro
 
 [tool.ruff.lint.isort]
-known-first-party = ["workg"]
+known-first-party = ["forja"]
 
 [tool.pytest.ini_options]
 pythonpath = ["src"]
@@ -83,7 +88,7 @@ addopts = "-q"
 
 [tool.mypy]
 python_version = "3.11"
-packages = ["workg"]
+packages = ["forja"]
 mypy_path = "src"
 ignore_missing_imports = true
 warn_unused_ignores = true

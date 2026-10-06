@@ -1,7 +1,7 @@
 import pytest
 from pydantic import ValidationError
 
-from workg.orchestrator.base import (
+from forja.orchestrator.base import (
     AgentContext,
     AgentRegistry,
     AgentSpec,

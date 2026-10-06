@@ -1,6 +1,6 @@
-from workg.agents.commit_pr_devops.agent import CommitPrDevOpsAgent, build
-from workg.config import Settings
-from workg.orchestrator.base import AgentContext
+from forja.agents.commit_pr_devops.agent import CommitPrDevOpsAgent, build
+from forja.config import Settings
+from forja.orchestrator.base import AgentContext
 
 
 def _agent() -> CommitPrDevOpsAgent:

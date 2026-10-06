@@ -22,4 +22,4 @@ echo "==> Instalando hooks de pre-commit"
 pre-commit install
 
 echo
-echo "Pronto. Rode:  workg serve  (ou: uvicorn workg.web.app:app --reload)"
+echo "Pronto. Rode:  forja serve  (ou: uvicorn forja.web.app:app --reload)"

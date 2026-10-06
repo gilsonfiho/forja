@@ -1,7 +1,7 @@
 # Agent: RAG / Base de Conhecimento
 
 Busca semântica e Q&A sobre os documentos `.md` de chamados e projetos
-(pasta `knowledge_base/`, configurável por `WORKG_KNOWLEDGE_BASE_PATH`).
+(pasta `knowledge_base/`, configurável por `FORJA_KNOWLEDGE_BASE_PATH`).
 
 ## Ações
 
@@ -11,15 +11,15 @@ Busca semântica e Q&A sobre os documentos `.md` de chamados e projetos
 
 ## Embeddings e store
 
-- **Embeddings** (`WORKG_EMBEDDINGS_PROVIDER`): `local` (sentence-transformers).
+- **Embeddings** (`FORJA_EMBEDDINGS_PROVIDER`): `local` (sentence-transformers).
   Sem o pacote instalado, usa um embedder de hashing determinístico (offline).
-- **Vector store** (`WORKG_VECTOR_STORE`): `chroma` (persistente) ou fallback
+- **Vector store** (`FORJA_VECTOR_STORE`): `chroma` (persistente) ou fallback
   em memória com persistência JSON.
 
 ## Exemplos
 
 ```bash
-workg run rag --action reindex
-workg run rag --action query --prompt "como resolvemos o timeout do serviço X?"
-workg run rag --action ask -p q="passos do runbook de rollback" -p k=6
+forja run rag --action reindex
+forja run rag --action query --prompt "como resolvemos o timeout do serviço X?"
+forja run rag --action ask -p q="passos do runbook de rollback" -p k=6
 ```

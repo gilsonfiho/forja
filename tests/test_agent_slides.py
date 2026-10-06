@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from workg.agents.slides.agent import SlidesAgent, build
-from workg.config import Settings
-from workg.orchestrator.base import AgentContext
+from forja.agents.slides.agent import SlidesAgent, build
+from forja.config import Settings
+from forja.orchestrator.base import AgentContext
 
 
 def _agent(tmp_path: Path) -> SlidesAgent:
