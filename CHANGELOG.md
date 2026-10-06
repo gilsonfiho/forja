@@ -11,6 +11,15 @@ e tag em `main`.
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-10-05
+Primeira release pública como **Forja**. Consolida em `main` tudo desde a
+`1.0.0`: saída rica no dashboard (`1.1.0`), servidor MCP (`1.2.0`) e o rename
+do projeto para Forja (`1.3.0`).
+
+### Changed
+- **BREAKING:** identidade do projeto passou a ser **Forja** — pacote `forja`,
+  CLI `forja`/`forja-mcp`, tools MCP `forja_*`, prefixo de ambiente `FORJA_`.
+
 ## [1.3.0] - 2026-10-05
 ### Changed
 - **Projeto renomeado para Forja** (antes "WorkG"). Mudança de identidade que
@@ -96,16 +105,17 @@ Slides & Infographics), orquestrador com Claude Agent SDK e dashboard web.
   orquestrador (`BaseAgent`/`AgentRegistry`), runtime do Claude Agent SDK,
   CLI (`forja`), app FastAPI mínimo, tooling (ruff, mypy, pre-commit, CI) e docs base.
 
-[Unreleased]: https://example.com/forja/compare/v1.3.0...develop
-[1.3.0]: https://example.com/forja/compare/v1.2.0...v1.3.0
-[1.2.0]: https://example.com/forja/compare/v1.1.0...v1.2.0
-[1.1.0]: https://example.com/forja/compare/v1.0.0...v1.1.0
-[1.0.0]: https://example.com/forja/compare/v0.8.0...v1.0.0
-[0.8.0]: https://example.com/forja/compare/v0.7.0...v0.8.0
-[0.7.0]: https://example.com/forja/compare/v0.6.0...v0.7.0
-[0.6.0]: https://example.com/forja/compare/v0.5.0...v0.6.0
-[0.5.0]: https://example.com/forja/compare/v0.4.0...v0.5.0
-[0.4.0]: https://example.com/forja/compare/v0.3.0...v0.4.0
-[0.3.0]: https://example.com/forja/compare/v0.2.0...v0.3.0
-[0.2.0]: https://example.com/forja/compare/v0.1.0...v0.2.0
-[0.1.0]: https://example.com/forja/releases/tag/v0.1.0
+[Unreleased]: https://github.com/gilsonfiho/forja/compare/v2.0.0...develop
+[2.0.0]: https://github.com/gilsonfiho/forja/compare/v1.3.0...v2.0.0
+[1.3.0]: https://github.com/gilsonfiho/forja/compare/v1.2.0...v1.3.0
+[1.2.0]: https://github.com/gilsonfiho/forja/compare/v1.1.0...v1.2.0
+[1.1.0]: https://github.com/gilsonfiho/forja/compare/v1.0.0...v1.1.0
+[1.0.0]: https://github.com/gilsonfiho/forja/compare/v0.8.0...v1.0.0
+[0.8.0]: https://github.com/gilsonfiho/forja/compare/v0.7.0...v0.8.0
+[0.7.0]: https://github.com/gilsonfiho/forja/compare/v0.6.0...v0.7.0
+[0.6.0]: https://github.com/gilsonfiho/forja/compare/v0.5.0...v0.6.0
+[0.5.0]: https://github.com/gilsonfiho/forja/compare/v0.4.0...v0.5.0
+[0.4.0]: https://github.com/gilsonfiho/forja/compare/v0.3.0...v0.4.0
+[0.3.0]: https://github.com/gilsonfiho/forja/compare/v0.2.0...v0.3.0
+[0.2.0]: https://github.com/gilsonfiho/forja/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/gilsonfiho/forja/releases/tag/v0.1.0
