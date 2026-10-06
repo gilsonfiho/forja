@@ -4,7 +4,7 @@ build-backend = "hatchling.build"
 
 [project]
 name = "forja"
-version = "1.3.0"
+version = "2.0.0"
 description = "Dev Workflow Copilot — agents, skills e scripts orquestrados (Jira, repos, commits/PR, relatórios, slides, RAG)."
 readme = "README.md"
 requires-python = ">=3.11"
@@ -62,8 +62,8 @@ forja = "forja.__main__:app"
 forja-mcp = "forja.mcp_server.__main__:main"
 
 [project.urls]
-Homepage = "https://example.com/forja"
-Changelog = "https://example.com/forja/blob/main/CHANGELOG.md"
+Homepage = "https://github.com/gilsonfiho/forja"
+Changelog = "https://github.com/gilsonfiho/forja/blob/main/CHANGELOG.md"
 
 [tool.hatch.build.targets.wheel]
 packages = ["src/forja"]
