@@ -19,4 +19,4 @@ if (-not (Test-Path ".env")) {
 Write-Host "==> Instalando hooks de pre-commit"
 pre-commit install
 
-Write-Host "`nPronto. Rode:  workg serve  (ou: uvicorn workg.web.app:app --reload)"
+Write-Host "`nPronto. Rode:  forja serve  (ou: uvicorn forja.web.app:app --reload)"

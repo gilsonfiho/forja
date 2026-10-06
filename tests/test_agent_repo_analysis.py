@@ -1,9 +1,9 @@
 from pathlib import Path
 
-from workg.agents.repo_analysis.agent import RepoAnalysisAgent, build
-from workg.config import Settings
-from workg.integrations import git_repos
-from workg.orchestrator.base import AgentContext
+from forja.agents.repo_analysis.agent import RepoAnalysisAgent, build
+from forja.config import Settings
+from forja.integrations import git_repos
+from forja.orchestrator.base import AgentContext
 
 
 def _make_repo(root: Path, name: str, *, with_ci: bool = False, with_tests: bool = False) -> Path:

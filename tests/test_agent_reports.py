@@ -1,8 +1,8 @@
 from pathlib import Path
 
-from workg.agents.reports.agent import ReportsAgent, _slugify, build
-from workg.config import Settings
-from workg.orchestrator.base import AgentContext
+from forja.agents.reports.agent import ReportsAgent, _slugify, build
+from forja.config import Settings
+from forja.orchestrator.base import AgentContext
 
 
 def test_slugify():

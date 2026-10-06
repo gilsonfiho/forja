@@ -1,12 +1,12 @@
 {
   "mcpServers": {
-    "workg": {
+    "forja": {
       "command": "./.venv/Scripts/python.exe",
-      "args": ["-m", "workg.mcp_server"],
+      "args": ["-m", "forja.mcp_server"],
       "env": {
-        "WORKG_ANTHROPIC_API_KEY": "",
-        "WORKG_KNOWLEDGE_BASE_PATH": "knowledge_base",
-        "WORKG_REPOS_ROOT": ""
+        "FORJA_ANTHROPIC_API_KEY": "",
+        "FORJA_KNOWLEDGE_BASE_PATH": "knowledge_base",
+        "FORJA_REPOS_ROOT": ""
       }
     }
   }

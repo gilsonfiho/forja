@@ -1,6 +1,6 @@
-from workg.agents.jira.agent import DEFAULT_JQL, JiraAgent, build
-from workg.config import Settings
-from workg.orchestrator.base import AgentContext
+from forja.agents.jira.agent import DEFAULT_JQL, JiraAgent, build
+from forja.config import Settings
+from forja.orchestrator.base import AgentContext
 
 
 def _agent() -> JiraAgent:

@@ -19,7 +19,7 @@ inventário de repositórios e base de conhecimento via RAG).
 ## Exemplos
 
 ```bash
-workg run reports --action generate -p type=status -p title="Status Semanal" \
+forja run reports --action generate -p type=status -p title="Status Semanal" \
   -p include=repos -p kb_query="incidentes recentes do serviço X"
 ```
 
